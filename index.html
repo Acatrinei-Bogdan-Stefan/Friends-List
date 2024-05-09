@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modul-ul 3</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="main-body-container">
+  <form class="add-friend-card" id="myForm" onsubmit="saveFriend()">
+    <h2>Add Friend</h2>
+
+    <label for="">First Name <span>*</span></label>
+    <input type="text" name="FirstName" id="jsFirstName" autocomplete="off" required>
+
+    <label for="">Last Name <span>*</span></label>
+    <input type="text" name="LastName" id="jsLastName" autocomplete="off" required>
+
+    <label for="">Time we have been friends: <span>*</span></label>
+    <input type="number" name="friendTime" id="jsFriendTime" autocomplete="off" required>
+
+    <label for="">Favorite Game <span>*</span></label >
+    <input type="text" name="FavoriteGame" id="jsFavoriteGame" autocomplete="off" required>
+
+    <label for="">Favorite Book <span>*</span></label>
+    <input type="text" name="FavoriteBook" id="jsFavoriteBook" autocomplete="off" required>
+
+    <!-- <input type="button" value="Save" onclick="saveFriend()"> -->
+    <input type="submit" value="Save">
+    </form>
+
+  <div>
+    <h2>Friends list</h2> 
+    <strong>Sort:</strong>
+    <select id="jsSortBy" onchange="sort()">
+      <option value="x" hidden>Select a Sort Option</option>
+      <option value="byNames">By Names Alphabetically [A-Z]</option>
+      <option value="byNamesReverse">By Names Reverse Alphabetically [Z-A]</option>
+      <option value="bylongTime">By how long we known each other</option>
+      <option value="byLessTime">By how less we known each other</option>
+    </select>
+
+    <label for="">&nbsp &nbsp<strong>Search:</strong></label>
+    <select id="" onchange="filterSelection()">
+      <option value="name">Name</option>
+      <option value="years">Years</option>
+      <option value="game">Game</option>
+      <option value="book">Book</option>
+    </select>
+    <input type="text" onkeydown="searchFilter()">
+  </div>
+
+  <div id="list-item-container" class="friend-list-continer">
+   
+  </div>
+</div>
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
