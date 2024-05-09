@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modul-ul 3</title>
+  <title>Friend list</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,7 +27,6 @@
     <label for="">Favorite Book <span>*</span></label>
     <input type="text" name="FavoriteBook" id="jsFavoriteBook" autocomplete="off" required>
 
-    <!-- <input type="button" value="Save" onclick="saveFriend()"> -->
     <input type="submit" value="Save">
     </form>
 
@@ -43,18 +42,16 @@
     </select>
 
     <label for="">&nbsp &nbsp<strong>Search:</strong></label>
-    <select id="" onchange="filterSelection()">
+    <select id="areaSearched">
       <option value="name">Name</option>
       <option value="years">Years</option>
       <option value="game">Game</option>
       <option value="book">Book</option>
     </select>
-    <input type="text" onkeydown="searchFilter()">
+    <input type="text" id="wordSearched" autocomplete="off" placeholder="Press Enter to Search">
   </div>
 
-  <div id="list-item-container" class="friend-list-continer">
-   
-  </div>
+  <div id="list-item-container"  class="friend-list-continer"></div>
 </div>
 
   

@@ -130,14 +130,63 @@ function sort(){
   }
 }
 
-// Search Filter Function
-function filterSelection(selectedList){
-  console.log("Test");
+// Search Functions
+const wordSearchedInput = document.getElementById("wordSearched");
+const areaSearchedInput = document.getElementById("areaSearched");
+let obj = "test";
 
+
+wordSearchedInput.addEventListener("keypress", function(event) {
+
+  if (event.key === "Enter") {
+    if(wordSearchedInput.value !== ""){
+      searchFilter();
+    }else{
+      divListContainer.innerHTML = '<div class="noResultfound"><h1 >No Result Found</h1></div>' ;
+    }
+    
+  }
+
+});
+
+
+wordSearchedInput.addEventListener("focusout", refrashList)
+function refrashList(){
+if(wordSearchedInput.value === ""){
+  updateList();
 }
+}
+  
 
 function searchFilter() {
-  filterSelection();
-  
-console.log("Test");
-}
+  if (areaSearchedInput.value === "name"){
+    obj = listObj.filter(o => o.firstNameList.toLowerCase() === `${wordSearchedInput.value.toLowerCase()}`);
+  }else if(areaSearchedInput.value === "years"){
+    obj = listObj.filter(o => o.friendTimeList.toLowerCase() === `${wordSearchedInput.value.toLowerCase()}`);
+  }else if(areaSearchedInput.value === "game"){
+    obj = listObj.filter(o => o.favoriteGameList.toLowerCase() === `${wordSearchedInput.value.toLowerCase()}`);
+  }else if(areaSearchedInput.value === "book"){
+    obj = listObj.filter(o => o.favoriteBookList.toLowerCase() === `${wordSearchedInput.value.toLowerCase()}`);
+  } 
+
+  if (obj.length === 0){
+    divListContainer.innerHTML = '<div class="noResultfound"><h1 >No Result Found</h1></div>' ;
+  }else{
+    divListContainer.innerHTML = "";
+
+    obj.map((item) => {
+      divListContainer.innerHTML += `
+      <div class="friend-list-card">
+      <p><strong>Fullname:</strong> <br> <span>${item.firstNameList + " " + item.lastNameList}</span> </p>
+      <p><strong>Years we have been friends:</strong> <br> <span>${item.friendTimeList} Years </span> </p>
+      <p><strong>Favorite Game:</strong> <br> <span>${item.favoriteGameList}</span> </p>
+      <p><strong>Favorite Book:</strong> <br> <span>${item.favoriteBookList}</span> </p>
+      <div class="delete-friend-button">
+        <input type="button" value="Delete" onclick="deleteFriend('${item.firstNameList}')">
+      </div>
+      </div>
+      `;
+    });
+  }
+  }
+
